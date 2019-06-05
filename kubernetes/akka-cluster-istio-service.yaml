@@ -9,38 +9,15 @@ spec:
   - port: 8080
     name: http
   selector:
-    app: akka-cluster-demo
+   app: akka-cluster-demo
 ---
-apiVersion: networking.istio.io/v1alpha3
-kind: Gateway
+apiVersion: gateway.kyma-project.io/v1alpha2
+kind: Api
 metadata:
   name: akka-cluster-demo
 spec:
-  selector:
-    istio: ingressgateway
-  servers:
-  - port:
-      number: 80
-      name: http
-      protocol: http
-    hosts:
-    - "*"
----
-apiVersion: networking.istio.io/v1alpha3
-kind: VirtualService
-metadata:
-  name: akka-cluster-demo
-spec:
-  hosts:
-  - "*"
-  gateways:
-  - akka-cluster-demo
-  http:
-  - match:
-    - uri:
-        prefix: /
-    route:
-    - destination:
-        host: akka-cluster-demo
-        port:
-          number: 8080
+  authentication: []
+  hostname: akka-cluster-demo
+  service:
+    name: akka-cluster-demo
+    port: 8080

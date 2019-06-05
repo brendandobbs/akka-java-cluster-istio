@@ -39,7 +39,7 @@ function sendWebSocketRequest(request) {
   if (webSocket && webSocket.readyState == WebSocket.OPEN) {
     webSocket.send(request);
   } else {
-    webSocket = new WebSocket('ws://' + location.host + '/events');
+    webSocket = new WebSocket('wss://' + location.host + '/events');
     update({ 'name': 'cluster', 'type': 'cluster' });
 
     webSocket.onopen = function(event) {

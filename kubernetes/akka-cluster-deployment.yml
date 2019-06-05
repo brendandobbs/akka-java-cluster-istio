@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: akka-cluster-demo
-        image: jamesroper/akka-cluster-demo:1.0.3
+        image: brendandobbs/akka-cluster-demo:1.0.3
         imagePullPolicy: Always
         ports:
         - name: http
